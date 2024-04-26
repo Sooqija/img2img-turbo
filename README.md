@@ -1,7 +1,46 @@
 # img2img-turbo
 
 [**Paper**](https://arxiv.org/abs/2403.12036) | [**Sketch2Image Demo**](https://huggingface.co/spaces/gparmar/img2img-turbo-sketch) 
-#### **Quick start:** [**Running Locally**](#getting-started) | [**Gradio (locally hosted)**](#gradio-demo) | [**Training**](#training-with-your-own-data)
+#### **Quick start:** [**Running Locally**](#getting-started) | [**Running Through Docker**](#running-through-docker) | [**Gradio (locally hosted)**](#gradio-demo)
+
+## Running Through Docker
+
+**Requirenments**
+
+- NVIDIA GPU (tested on 12 GB VRAM)
+- 20 GB avaliable space
+
+**Steps**
+
+- *Ubuntu only*: Install [the NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) for NVIDIA GPU support if you haven't
+- You can build docker image or pull it.
+
+If you chose building, run (~30 min):
+```
+docker build -t <your_name_of_the_image> .
+```
+
+If you chose pulling, run (~10 min):
+```
+docker pull sooqija/img2img-turbo
+```
+It will pull ready-made docker image from [DockerHub repository](https://hub.docker.com/r/sooqija/img2img-turbo).
+
+- Run Docker Container with GPU support:
+
+```
+docker run -p 7860:7860 --gpus all -it <your_name_of_the_image>
+```
+
+- Run server inside docker container:
+
+```
+gradio gradio_sketch2image.py
+```
+
+Check for server on http://0.0.0.0:7860.
+
+
 
 ### Cat Sketching
 <p align="left" >
@@ -105,6 +144,13 @@ We tightly integrate three separate modules in the original latent diffusion mod
   source venv/bin/activate
   pip install -r requirements.txt
   ```
+
+- You can verify your installation through running the following script (make sure you activate the environment).
+
+```
+python scripts/verify_installation.py
+```
+
 **Paired Image Translation (pix2pix-turbo)**
 - The following command takes an image file and a prompt as inputs, extracts the canny edges, and saves the results in the directory specified.
     ```bash
