@@ -38,7 +38,7 @@ docker run -p 7860:7860 --gpus all -it <your_name_of_the_image>
 gradio gradio_sketch2image.py
 ```
 
-Check for server on http://0.0.0.0:7860.
+Check for server on http://127.0.0.1:7860.
 
 
 
