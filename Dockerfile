@@ -8,3 +8,4 @@ RUN python -m pip install -r requirements.txt
 RUN python ./scripts/docker_build_script.py
 
 EXPOSE 7860
+ENV GRADIO_SERVER_NAME="0.0.0.0"
