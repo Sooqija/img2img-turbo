@@ -28,7 +28,7 @@ if process.returncode == 0:
 
     image_origin = cv2.imread(path_to_origin)
     image_origin = cv2.cvtColor(image_origin, cv2.COLOR_BGR2GRAY)
-    image_test = cv2.imread(path_to_origin)
+    image_test = cv2.imread(path_to_test)
     image_test = cv2.cvtColor(image_test, cv2.COLOR_BGR2GRAY) 
     (ssim, diff) = structural_similarity(image_origin, image_test, full=True)
     print("SSIM: {}".format(ssim))
@@ -43,7 +43,7 @@ else:
 # 2. Test
 
 path_to_origin = "assets/examples/sketch_output.png"
-path_to_test = "outputs/bird.png"
+path_to_test = "outputs/sketch_input.png"
 
 args = ['--model_name',
         'sketch_to_image_stochastic',
@@ -67,7 +67,7 @@ if process.returncode == 0:
 
     image_origin = cv2.imread(path_to_origin)
     image_origin = cv2.cvtColor(image_origin, cv2.COLOR_BGR2GRAY)
-    image_test = cv2.imread(path_to_origin)
+    image_test = cv2.imread(path_to_test)
     image_test = cv2.cvtColor(image_test, cv2.COLOR_BGR2GRAY) 
     (ssim, diff) = structural_similarity(image_origin, image_test, full=True)
     print("SSIM: {}".format(ssim))
