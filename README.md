@@ -13,34 +13,19 @@
 **Steps**
 
 - *Ubuntu only*: Install [the NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) for NVIDIA GPU support if you haven't
-- You can build docker image or pull it.
+- To build image run:
 
-If you chose building, run (~30 min):
 ```
 docker build -t <your_name_of_the_image> .
 ```
 
-If you chose pulling, run (~10 min):
-```
-docker pull sooqija/img2img-turbo
-```
-It will pull ready-made docker image from [DockerHub repository](https://hub.docker.com/r/sooqija/img2img-turbo).
-
 - Run Docker Container with GPU support:
 
 ```
-docker run -p 7860:7860 --gpus all -it <your_name_of_the_image>
+docker run -v ./:/app --gpus all -it <your_name_of_the_image>
 ```
 
-- Run server inside docker container:
-
-```
-gradio gradio_sketch2image.py
-```
-
-Check for server on http://127.0.0.1:7860.
-
-
+- Analize result. SSIM: 1.0 and MSE:0.0 means that images are identical.
 
 ### Cat Sketching
 <p align="left" >
